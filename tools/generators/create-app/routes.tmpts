@@ -1,0 +1,12 @@
+import { Routes } from "@nestjs/core";
+import { ExampleModule } from "./packages/Example/example.module";
+
+// global prefix => /services/{{app_name}}
+// ex. https://domain.com/services/{{app_name}}/example
+
+export const routes: Routes = [
+    {
+        path: "example",
+        module: ExampleModule
+    }
+]

@@ -1,0 +1,24 @@
+{
+    "$schema": "../../node_modules/nx/schemas/project-schema.json",
+    "sourceRoot": "libs/nest-request-id/src",
+    "projectType": "library",
+    "targets": {
+      "lint": {
+        "executor": "@nrwl/linter:eslint",
+        "outputs": ["{options.outputFile}"],
+        "options": {
+          "lintFilePatterns": ["libs/nest-request-id/**/*.ts"]
+        }
+      },
+      "test": {
+        "executor": "@nrwl/jest:jest",
+        "outputs": ["coverage/libs/nest-request-id"],
+        "options": {
+          "jestConfig": "libs/nest-request-id/jest.config.ts",
+          "passWithNoTests": true
+        }
+      }
+    },
+    "tags": []
+  }
+  

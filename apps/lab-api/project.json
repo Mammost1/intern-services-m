@@ -1,0 +1,66 @@
+{
+    "$schema": "../../node_modules/nx/schemas/project-schema.json",
+    "sourceRoot": "apps/lab-api/src",
+    "projectType": "application",
+    "targets": {
+        "build": {
+            "executor": "@nrwl/node:webpack",
+            "outputs": [
+                "{options.outputPath}"
+            ],
+            "options": {
+                "outputPath": "dist/apps/lab-api",
+                "main": "apps/lab-api/src/main.ts",
+                "tsConfig": "apps/lab-api/tsconfig.app.json",
+                "assets": [
+                    "apps/lab-api/src/assets"
+                ]
+            },
+            "configurations": {
+                "production": {
+                    "optimization": true,
+                    "extractLicenses": false,
+                    "inspect": false,
+                    "fileReplacements": [
+                        {
+                            "replace": "apps/lab-api/src/environments/environment.ts",
+                            "with": "apps/lab-api/src/environments/environment.prod.ts"
+                        },
+                        {
+                            "replace": "libs/config/src/config.ts",
+                            "with": "libs/config/src/config.prod.ts"
+                        }
+                    ]
+                }
+            }
+        },
+        "serve": {
+            "executor": "@nrwl/node:node",
+            "options": {
+                "buildTarget": "lab-api:build"
+            }
+        },
+        "lint": {
+            "executor": "@nrwl/linter:eslint",
+            "outputs": [
+                "{options.outputFile}"
+            ],
+            "options": {
+                "lintFilePatterns": [
+                    "apps/lab-api/**/*.ts"
+                ]
+            }
+        },
+        "test": {
+            "executor": "@nrwl/jest:jest",
+            "outputs": [
+                "coverage/apps/lab-api"
+            ],
+            "options": {
+                "jestConfig": "apps/lab-api/jest.config.ts",
+                "passWithNoTests": true
+            }
+        }
+    },
+    "tags": []
+}

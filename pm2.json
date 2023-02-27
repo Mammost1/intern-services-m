@@ -1,0 +1,18 @@
+{
+    "_comment": "Generate configuration  http://pm2.keymetrics.io/docs/usage/application-declaration/",
+    "apps": [
+        {
+            "name": "lab-api:serve",
+            "script": "yarn run lab-api:serve",
+            "instances": 1,
+            "exec_mode": "fork",
+            "watch": false,
+            "max_memory_restart": "4096M",
+            "kill_timeout": 60000,
+            "ignore_watch": [
+                "node_modules"
+            ],
+            "log_date_format": "YYYY-MM-DD HH:mm Z"
+        }
+    ]
+}
